@@ -56,8 +56,9 @@ var request = {
                         
 app.get("/ether",async (req,res)=>{
     
-    contractAddress = '0x25a2a1f8212a264363057198f715467fa7187910';
-    contractABI = [{    "constant": false,    "inputs": [        {            "name": "_records",            "type": "string"        }    ],    "name": "records",    "outputs": [],    "payable": true,    "stateMutability": "payable",    "type": "function"},{    "inputs": [],    "payable": false,    "stateMutability": "nonpayable",    "type": "constructor"},{    "constant": true,    "inputs": [],    "name": "readrecords",    "outputs": [        {            "name": "",            "type": "string"        }    ],    "payable": false,    "stateMutability": "view",    "type": "function"}
+    contractAddress = '0xbef5416943bb7598e6b347b7f0a17271f105befc';
+    myAddress = '0x4C637fC36ecA2d02d5214b53c0aEc272f31F7E53';
+    contractABI = [{    "constant": false,    "inputs": [        {            "name": "_records",            "type": "string"        }    ],    "name": "records",    "outputs": [],    "payable": true,    "stateMutability": "payable",    "type": "function"},{    "constant": true,    "inputs": [],    "name": "readrecords",    "outputs": [        {            "name": "",            "type": "string"        }    ],    "payable": false,    "stateMutability": "view",    "type": "function"},{    "inputs": [],    "payable": false,    "stateMutability": "nonpayable",    "type": "constructor"}
     ]
 
     if (typeof web3 !== 'undefined') {
@@ -70,9 +71,21 @@ app.get("/ether",async (req,res)=>{
 
     var contract = await new web3.eth.Contract(contractABI,contractAddress);
 
-    web3.eth.getAccounts(console.log);
+    // web3.eth.getCoinbase().then(console.log);
 
-    // console.log(coinbase);
+    web3.eth.getBalance(myAddress, function (err, result) { 
+        console.log(result)
+    })
+
+    // await contract.methods.records("xin chao toi la hoang").send({
+    //     from : myAddress, 
+    //     value : 2000000
+    // })
+
+    //can read 
+    contract.methods.readrecords().call({
+        from : myAddress
+    }).then((balance)=>{console.log(balance)});
 
     res.render("product/test");
 })
