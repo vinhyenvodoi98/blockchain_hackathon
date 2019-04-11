@@ -23,7 +23,7 @@ LANGUAGE=`echo "$LANGUAGE" | tr [:upper:] [:lower:]`
 COUNTER=1
 MAX_RETRY=10
 
-CC_SRC_PATH="github.com/chaincode/go03/fish_origin"
+CC_SRC_PATH="github.com/chaincode/go03/demo"
 
 echo "Channel name : "$CHANNEL_NAME
 
@@ -87,19 +87,9 @@ installChaincode 1 2
 
 # Instantiate chaincode on peer0.org2
 echo "Instantiating chaincode on peer0.org2..."
-instantiateChaincode 0 2
+instantiateChaincode
 sleep 5
 
-echo
 echo "========= All GOOD, BYFN execution completed =========== "
-echo
-
-echo
-echo " _____   _   _   ____   "
-echo "| ____| | \ | | |  _ \  "
-echo "|  _|   |  \| | | | | | "
-echo "| |___  | |\  | | |_| | "
-echo "|_____| |_| \_| |____/  "
-echo
 
 exit 0
