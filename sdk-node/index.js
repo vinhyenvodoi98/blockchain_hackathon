@@ -2,8 +2,12 @@ var express = require("express");
 var app = express();
 var formidable = require('formidable');
 var fs = require('fs');
-const delay = require('delay');
 
+//ether
+var Web3 = require('web3');
+const Tx = require('ethereumjs-tx');
+
+const delay = require('delay');
 
 
 var bodyParser = require('body-parser');
@@ -48,7 +52,44 @@ var request = {
     fcn: "",
     args: ['']
 };
-                            
+
+                        
+app.get("/ether",async (req,res)=>{
+    
+    contractAddress = '0xbef5416943bb7598e6b347b7f0a17271f105befc';
+    myAddress = '0x4C637fC36ecA2d02d5214b53c0aEc272f31F7E53';
+    contractABI = [{    "constant": false,    "inputs": [        {            "name": "_records",            "type": "string"        }    ],    "name": "records",    "outputs": [],    "payable": true,    "stateMutability": "payable",    "type": "function"},{    "constant": true,    "inputs": [],    "name": "readrecords",    "outputs": [        {            "name": "",            "type": "string"        }    ],    "payable": false,    "stateMutability": "view",    "type": "function"},{    "inputs": [],    "payable": false,    "stateMutability": "nonpayable",    "type": "constructor"}
+    ]
+
+    if (typeof web3 !== 'undefined') {
+        var web3Provider = await web3.currentProvider;
+    } else {
+        // If no injected web3 instance is detected, fall back to Ganache
+        var web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/33067fd895d4482fa44cbe0f5049e96b');
+    }
+    web3 = await new Web3(web3Provider);
+
+    var contract = await new web3.eth.Contract(contractABI,contractAddress);
+
+    // web3.eth.getCoinbase().then(console.log);
+
+    web3.eth.getBalance(myAddress, function (err, result) { 
+        console.log(result)
+    })
+
+    // await contract.methods.records("xin chao toi la hoang").send({
+    //     from : myAddress, 
+    //     value : 2000000
+    // })
+
+    //can read 
+    contract.methods.readrecords().call({
+        from : myAddress
+    }).then((balance)=>{console.log(balance)});
+
+    res.render("product/test");
+})
+
 //////--->
 app.get("/home", function(req, res){
     res.render("index");
