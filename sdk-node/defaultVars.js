@@ -1,10 +1,12 @@
 
 var fs = require('fs');
-let peerPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/peerOrganizations/org1.com/peers/peer0.org1.com/tls/ca.crt');
-let ordererPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/ordererOrganizations/com/orderers/orderer.com/tls/ca.crt');
+// let peerPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/peerOrganizations/org1.com/peers/peer0.org1.com/tls/ca.crt');
+// let ordererPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/ordererOrganizations/com/orderers/orderer.com/tls/ca.crt');
 module.exports = {
-    PEER_PEM: peerPem,
-    ORDERER_PEM: ordererPem,
+    // PEER_PEM: peerPem,
+    // ORDERER_PEM: ordererPem,
+    PEER_PEM: "",
+    ORDERER_PEM: "",
     PEER_HOST: "localhost:7051",
     EVENT_HOST: "localhost:7051",
     ORDERER_HOST: "localhost:7050",

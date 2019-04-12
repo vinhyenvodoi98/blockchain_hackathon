@@ -70,6 +70,10 @@ app.get("/get-profile", function(req, res){
     res.render("product/get_product");
 });
 
+// app.get("/app.js", (req,res)=>{
+//     res.render ("product/app");
+// })
+
 app.get("/submit-eth", function(req, res){
     var id = "12345678";
     console.log("id: ", id);

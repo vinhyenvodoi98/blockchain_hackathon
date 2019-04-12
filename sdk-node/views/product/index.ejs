@@ -174,6 +174,7 @@
       <% }) %>
       <button type="submit" class="btn btn-primary">Submit</button>
   </section>
+    
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -189,8 +190,88 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- web3 -->
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+<!-- javascipt -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
+<script>
+  
+  var address = '0x02f3093b8baa4f52595f3d3e852af6e4f321890f';
+  var abi =  [{	"constant": false,	"inputs": [		{			"name": "_records",			"type": "string"		}	],	"name": "records",	"outputs": [],	"payable": true,	"stateMutability": "payable",	"type": "function"},{	"inputs": [],	"payable": false,	"stateMutability": "nonpayable",	"type": "constructor"},{	"constant": true,	"inputs": [],	"name": "readrecords",	"outputs": [		{			"name": "",			"type": "string"		}	],	"payable": false,	"stateMutability": "view",	"type": "function"}
+  ]
+  
+  App = {
+    web3Provider: null,
+    contract: null,
+    pending: false,
+    transactionHash : null,
+    
+    init: function() {
+    if (typeof web3 !== 'undefined') {
+        App.web3Provider = web3.currentProvider;
+    } else {
+        // If no injected web3 instance is detected, fall back to Ganache
+        App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/33067fd895d4482fa44cbe0f5049e96b');
+    }
+    web3 = new Web3(App.web3Provider);
+    pending = false;
+
+    App.initContract();
+    },
+
+    initContract: function() {
+        App.contract = new web3.eth.Contract( abi,address,{
+            gasPrice: '200000000'
+        });
+        setInterval(App.updateState, 1000);
+        App.updateState();
+        
+    },
+
+    updateState: async function() {
+        let contract = App.contract;
+        let coinbase = await web3.eth.getCoinbase();
+        App.coinbase = coinbase ;
+
+        web3.eth.getBalance(coinbase, function (err, result) { 
+            if (!err) {
+              console.log(result)
+            }
+            else console.error(err);
+        });
+
+        contract.methods.readrecords().call({
+            from : App.coinbase
+        })
+        .then((value) =>{
+            console.log("loadrecode :"+ value );
+        })
+      },
+
+    sendrecord : async function(){
+      let contract = App.contract;
+      let coinbase = App.coinbase;
+      
+      await contract.methods.records(user_records).send(
+          {
+              from : coinbase,
+          })
+      .then((receipt)=>{})
+    }
+  }
+
+  $(function() {
+    $(window).load(function() {
+    App.init();
+    });
+});
+    
+</script>
 <!-- jQuery 3 -->
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+
 <!-- Bootstrap 3.3.7 -->
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
