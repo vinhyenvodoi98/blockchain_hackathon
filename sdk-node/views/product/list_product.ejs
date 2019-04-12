@@ -120,27 +120,28 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cửa Hàng</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh viện</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-product"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
-            <li><a href="/create-product"><i class="fa fa-circle-o"></i>Thêm sản phẩm mới</a></li>
-            <li><a href="/delete-product"><i class="fa fa-circle-o"></i>Xóa sản phẩm</a></li>
+            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>Danh sách hồ sơ</a></li>
+            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>Thêm hồ sơ</a></li>
+            <li><a href="/delete-profile"><i class="fa fa-circle-o"></i>Xóa hồ sơ</a></li>
           </ul>
         </li>
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cơ quan chứng thực</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh nhân</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-update-certificate"><i class="fa fa-circle-o"></i>Cập nhật chứng chỉ</a></li>
+            <li><a href="get-profile"><i class="fa fa-circle-o"></i>Xem hồ sơ</a></li>
+            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>Gửi hồ sơ</a></li>
           </ul>
         </li>
       </ul>
@@ -154,38 +155,35 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1 style='font-size:30px; margin-top: 10px'>
-                    Danh sách tất cả các sản phẩm
+                    Danh sách hồ sơ
                 </h1>
                 <table style="with:100%; margin-top: 15px" >
                         <thead>
-                          <th style="padding:0 40px;">ID sản phẩm</th>
-                          <th style="padding:0 40px;">Tên sản phẩm</th>
-                          <th style="padding:0 40px;">Hình ảnh sản phẩm</th>
-                          <th style="padding:0 40px;">Đã được kiểm định</th>
-                          <th style="padding:0 40px;">Hành động</th>
+                          <th style="padding:0 40px;">ID </th>
+                          <th style="padding:0 40px;">Tên </th>
+                          <th style="padding:0 40px;">Ngày khám bệnh</th>
+                          <th style="padding:0 40px;">Nội dung</th>
+                          <th style="padding:0 40px;">Xóa hồ sơ</th>
                         </thead>
                         <tbody>
                         <% products.forEach(function(product) { %>
                           <tr>
                             <td style="padding:2px 40px;">
-                              <a href="/get-product/<%= product.fish_id %>"><%= product.fish_id %></a>
+                              <a href="/get-profile/<%= product.id %>"><%= product.id %></a>
                             </td>
                             <td style="padding:2px 40px;">
                                 <%= product.name %>
                             </td>
+                            <% product.contents.forEach(function(content) { %>
                             <td style="padding:2px 40px;">
-                                <img src="<%= product.image_package %>" height="50" width="50" >
-                
+                              <%= content.date %>
                             </td>
                             <td style="padding:2px 40px;">
-                              <% if (product.certifications == null) { %>
-                                  No
-                              <% } else { %>
-                                  Yes
-                              <% } %>
+                              <%= content.information %>
                             </td>
+                            <% }); %>
                             <td style="padding:2px 40px;">
-                              <a href="/delete-product/<%= product.fish_id %>">Xóa</a>
+                              <a href="/delete-profile/<%= product.fish_id %>">Xóa</a>
                             </td>
                         </tr>
                         <% }); %>

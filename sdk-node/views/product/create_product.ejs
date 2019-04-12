@@ -120,27 +120,28 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cửa Hàng</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh viện</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-product"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
-            <li><a href="/create-product"><i class="fa fa-circle-o"></i>Thêm sản phẩm mới</a></li>
-            <li><a href="/delete-product"><i class="fa fa-circle-o"></i>Xóa sản phẩm</a></li>
+            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>Danh sách hồ sơ</a></li>
+            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>Thêm hồ sơ</a></li>
+            <li><a href="/delete-profile"><i class="fa fa-circle-o"></i>Xóa hồ sơ</a></li>
           </ul>
         </li>
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cơ quan chứng thực</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh nhân</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="list-update-certificate"><i class="fa fa-circle-o"></i>Cập nhật chứng chỉ</a></li>
+            <li><a href="get-profile"><i class="fa fa-circle-o"></i>Xem hồ sơ</a></li>
+            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>Gửi hồ sơ</a></li>
           </ul>
         </li>
       </ul>
@@ -159,7 +160,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Tạo sản phẩm mới
+                    Tạo hồ sơ mới
                 </h1>
                
             </section>
@@ -169,31 +170,22 @@
                 <!-- Default box -->
       <div class="box">
                 <div class="container-fluid">
-                  <form action="/create-product" method="POST" enctype="multipart/form-data"> <!---->
+                  <form action="/create-profile" method="POST" enctype="multipart/form-data"> <!---->
                     <div class="form-group">
-                        <label for="id_sp" class="col-md-4 control-label" >ID sản phẩm</label>
-                        <input type="text" class="form-control" name="fish_id" required >
+                        <label for="id_sp" class="col-md-4 control-label" >ID</label>
+                        <input type="text" class="form-control" name="id" required >
                     </div>
                     <div class="form-group">
-                        <label for="ten" class="col-md-4 control-label">Tên sản phẩm</label>
+                        <label for="ten" class="col-md-4 control-label">Tên bệnh nhân</label>
                         <input type="text" class="form-control" name="name" required >
                     </div>
                     <div class="form-group">
-                        <label for="khoi_luong" class="col-md-4 control-label">Khối lượng sản phẩm</label>
-                        <input type="text" class="form-control" name="weight_package" required  >
+                        <label for="date" class="col-md-4 control-label">Ngày khám bệnh</label>
+                        <input type="text" class="form-control" name="date" required  >
                     </div>
                     <div class="form-group">
-                        <label for="hinh_anh" class="col-md-4 control-label">Hình ảnh sản phẩm</label>
-                        <input type="file" class="form-control" name="image_package" required />
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="thoi_gian" class="col-md-4 control-label">Thời gian thu hoạch</label>
-                        <input type="text" class="form-control" name="time_fishing" required  >
-                    </div>
-                    <div class="form-group">
-                        <label for="dia_diem" class="col-md-4 control-label">Địa điểm thu hoạch</label>
-                        <input type="text" class="form-control" name="address_fishing" required  >
+                        <label for="information" class="col-md-4 control-label">Nội dung</label>
+                        <input type="text" class="form-control" name="information" required  >
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>

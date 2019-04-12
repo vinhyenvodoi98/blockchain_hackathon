@@ -120,27 +120,28 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cửa Hàng</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh viện</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-product"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
-            <li><a href="/create-product"><i class="fa fa-circle-o"></i>Thêm sản phẩm mới</a></li>
-            <li><a href="/delete-product"><i class="fa fa-circle-o"></i>Xóa sản phẩm</a></li>
+            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>Danh sách hồ sơ</a></li>
+            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>Thêm hồ sơ</a></li>
+            <li><a href="/delete-profile"><i class="fa fa-circle-o"></i>Xóa hồ sơ</a></li>
           </ul>
         </li>
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cơ quan chứng thực</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh nhân</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-update-certificate"><i class="fa fa-circle-o"></i>Cập nhật chứng chỉ</a></li>
+            <li><a href="get-profile"><i class="fa fa-circle-o"></i>Xem hồ sơ</a></li>
+            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>Gửi hồ sơ</a></li>
           </ul>
         </li>
       </ul>
@@ -153,55 +154,26 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Chi tiết sản phẩm
+                    Hồ sơ chi tiết
                 </h1>
                 <div class="form-group">
                     <label for="id_sp" class="col-md-4 control-label" >ID sản phẩm</label>
-                    <%= product.fish_id %>
+                    <%= product.id %>
                 </div>
                 <div class="form-group">
-                    <label for="ten" class="col-md-4 control-label">Tên sản phẩm</label>
+                    <label for="ten" class="col-md-4 control-label">Tên bệnh nhân</label>
                     <%= product.name %>
                 </div>
+                <% product.contents.forEach(function(content) { %>
                 <div class="form-group">
-                    <label for="khoi_luong" class="col-md-4 control-label">Khối lượng sản phẩm</label>
-                    <%= product.weight_package %> (kg)
+                    <label for="date" class="col-md-4 control-label">Ngày khám bệnh</label>
+                    <%= product.content.date %> (kg)
                 </div>
                 <div class="form-group">
-                    <label for="hinh_anh" class="col-md-4 control-label">Hình ảnh sản phẩm</label>
-                    <img src="<%= product.image_package %>">
+                    <label for="information" class="col-md-4 control-label">Nội dung</label>
+                    <%= product.content.information %>
                 </div>
-                <div class="form-group">
-                    <label for="thoi_gian" class="col-md-4 control-label">Thời gian thu hoạch</label>
-                    <%= product.time_fishing %>
-                </div>
-                <div class="form-group">
-                    <label for="dia_diem" class="col-md-4 control-label">Địa điểm thu hoạch</label>
-                    <%= product.address_fishing %>
-                </div>
-                <div class="form-group">
-                    <label for="id_transaction" class="col-md-4 control-label">ID transaction</label>
-                    <%= product.id_transaction %>
-                </div>
-                <% if (product.certifications == null) { %>
-                    <div class="form-group">
-                        <label for="kiem_dinh" class="col-md-4 control-label">Kiểm định</label>
-                        Sản phẩm chưa được kiểm định
-                    </div>
-                <%} else { %>
-                    <div class="form-group">
-                        <label for="to_chuc" class="col-md-4 control-label">Tổ chức kiểm định</label>
-                        <%= product.certifications[0].name_org_certification %>
-                    </div>
-                    <div class="form-group">
-                        <label for="dia_diem" class="col-md-4 control-label">Mã kiểm định cho sản phẩm</label>
-                        <%= product.certifications[0].code_certification %>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_transaction" class="col-md-4 control-label">Ngày kiểm định</label>
-                        <%= product.certifications[0].date_certification %>
-                    </div>
-                <%} %>
+                <% } %>
             </section>
         </div>
        

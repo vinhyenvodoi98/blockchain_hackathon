@@ -1,7 +1,7 @@
 
 var fs = require('fs');
-let peerPem = fs.readFileSync('/home/luatcoi/Project/src/fabric-samples/first-network/crypto-config/peerOrganizations/org1.com/peers/peer0.org1.com/tls/ca.crt');
-let ordererPem = fs.readFileSync('/home/luatcoi/Project/src/fabric-samples/first-network/crypto-config/ordererOrganizations/com/orderers/orderer.com/tls/ca.crt');
+let peerPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/peerOrganizations/org1.com/peers/peer0.org1.com/tls/ca.crt');
+let ordererPem = fs.readFileSync('/home/luatcoi/Project/src/blockchain_hackathon/hlf/first-network/crypto-config/ordererOrganizations/com/orderers/orderer.com/tls/ca.crt');
 module.exports = {
     PEER_PEM: peerPem,
     ORDERER_PEM: ordererPem,

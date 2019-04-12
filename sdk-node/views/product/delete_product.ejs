@@ -120,27 +120,28 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cửa Hàng</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh viện</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-product"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
-            <li><a href="/create-product"><i class="fa fa-circle-o"></i>Thêm sản phẩm mới</a></li>
-            <li><a href="/delete-product"><i class="fa fa-circle-o"></i>Xóa sản phẩm</a></li>
+            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>Danh sách hồ sơ</a></li>
+            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>Thêm hồ sơ</a></li>
+            <li><a href="/delete-profile"><i class="fa fa-circle-o"></i>Xóa hồ sơ</a></li>
           </ul>
         </li>
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cơ quan chứng thực</span>
+            <i class="fa fa-dashboard"></i> <span>Bệnh nhân</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-update-certificate"><i class="fa fa-circle-o"></i>Cập nhật chứng chỉ</a></li>
+            <li><a href="get-profile"><i class="fa fa-circle-o"></i>Xem hồ sơ</a></li>
+            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>Gửi hồ sơ</a></li>
           </ul>
         </li>
       </ul>
@@ -153,7 +154,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Xóa sản phẩm bằng ID
+                    Xóa hồ sơ bằng ID
                 </h1>
             </section>
             <hr/>
@@ -162,14 +163,14 @@
                     <br/>
                     <!-- <div class="clearfix"></div> -->
                     <div class="container-fluid col-md-6 col-md-offset-2">
-                        <form method="POST" action="/delete-product">
+                        <form method="POST" action="/delete-profile">
                             <div class="form-group">
-                                <label for="fish_id">Nhập ID sản phẩm</label>
+                                <label for="fish_id">Nhập ID bệnh nhân</label>
     
-                                <input type="text" class="form-control" id="fish_id " name="fish_id" required="required">
+                                <input type="text" class="form-control" id="fish_id " name="id" required="required">
     
                             </div>
-                            <button type="submit" class="btn btn-default">Delete</button>
+                            <button type="submit" class="btn btn-default">Xóa</button>
     
                         </form>
                     </div>

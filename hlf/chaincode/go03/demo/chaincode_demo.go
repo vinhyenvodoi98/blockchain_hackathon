@@ -16,7 +16,7 @@ type ChaincodeHosp struct {
 type Profile struct {
 	IDTransaction string    `json:"id_transaction"`
 	ID            string    `json:"id"`
-	Name          string    `json:"id_transaction"`
+	Name          string    `json:"name"`
 	Contents      []Content `json:"contents"`
 }
 
@@ -42,7 +42,7 @@ func (t *ChaincodeHosp) initProfile(stub shim.ChaincodeStubInterface, args []str
 	ID := args[1]
 	Name := args[2]
 	Date := args[3]
-	Information := args[3]
+	Information := args[4]
 
 	var Contents []Content
 
@@ -128,7 +128,7 @@ func (t *ChaincodeHosp) getProfileByID(stub shim.ChaincodeStubInterface, args []
 
 	ID := args[0]
 
-	queryString := fmt.Sprintf("{\"selector\":{\"fish_id\":\"%s\"}}", ID)
+	queryString := fmt.Sprintf("{\"selector\":{\"id\":\"%s\"}}", ID)
 
 	queryResults, err := getValueQueryResultForQueryString(stub, queryString)
 	if err != nil {

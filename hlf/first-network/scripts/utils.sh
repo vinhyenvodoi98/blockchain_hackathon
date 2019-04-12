@@ -117,7 +117,7 @@ installChaincode() {
   PEER=$1
   ORG=$2
   setGlobals $PEER $ORG
-  VERSION=${3:-1.0}
+  VERSION=${3:-2.0}
   set -x
   peer chaincode install -n demo -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} >&log.txt
   res=$?
