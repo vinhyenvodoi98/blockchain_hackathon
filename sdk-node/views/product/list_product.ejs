@@ -120,28 +120,27 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Bệnh viện</span>
+            <i class="fa fa-dashboard"></i> <span>HOSTPITAL</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>Danh sách hồ sơ</a></li>
-            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>Thêm hồ sơ</a></li>
-            <li><a href="/delete-profile"><i class="fa fa-circle-o"></i>Xóa hồ sơ</a></li>
+            <li><a href="/list-profile"><i class="fa fa-circle-o"></i>LIST</a></li>
+            <li><a href="/create-profile"><i class="fa fa-circle-o"></i>ADD</a></li>
           </ul>
         </li>
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Bệnh nhân</span>
+            <i class="fa fa-dashboard"></i> <span>USER</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="get-profile"><i class="fa fa-circle-o"></i>Xem hồ sơ</a></li>
-            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>Gửi hồ sơ</a></li>
+            <li><a href="get-profile"><i class="fa fa-circle-o"></i>VIEW</a></li>
+            <li><a href="submit-eth"><i class="fa fa-circle-o"></i>SEND</a></li>
           </ul>
         </li>
       </ul>
@@ -155,15 +154,15 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1 style='font-size:30px; margin-top: 10px'>
-                    Danh sách hồ sơ
+                    LIST PROFILE
                 </h1>
                 <table style="with:100%; margin-top: 15px" >
                         <thead>
                           <th style="padding:0 40px;">ID </th>
-                          <th style="padding:0 40px;">Tên </th>
-                          <th style="padding:0 40px;">Ngày khám bệnh</th>
-                          <th style="padding:0 40px;">Nội dung</th>
-                          <th style="padding:0 40px;">Xóa hồ sơ</th>
+                          <th style="padding:0 40px;">NAME </th>
+                          <th style="padding:0 40px;">DATE</th>
+                          <th style="padding:0 40px;">CONTENT</th>
+                          <th style="padding:0 40px;">DELETE</th>
                         </thead>
                         <tbody>
                         <% products.forEach(function(product) { %>

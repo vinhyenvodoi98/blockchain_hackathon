@@ -71,7 +71,36 @@ app.get("/get-profile", function(req, res){
 });
 
 app.get("/submit-eth", function(req, res){
-    res.render("product/index");
+    var id = "12345678";
+    console.log("id: ", id);
+
+    if (typeof id !== "undefined") {
+
+        request.fcn = "getProfileByID";
+        request.args = [id];
+        console.log(request);
+        
+        controller
+        .query(config.user, request)
+        .then(ret => {
+            product = JSON.parse(ret.toString())[0];
+            if (typeof product !== "undefined") {
+                console.log("product: ", product);
+
+                res.render("product/index", { product : product});
+            } else {
+                console.log("Loi khong tim thay");
+                res.render("404_notfound")
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+    }
+    else {
+        res.render("");
+    }
 });
 
 app.post("/create-profile", urlencodedParser, function(req, res){
