@@ -13,6 +13,68 @@
     <div>
         <h1>hello</h1>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      var address = '0xbef5416943bb7598e6b347b7f0a17271f105befc';
+      var abi = [{    "constant": false,    "inputs": [        {            "name": "_records",            "type": "string"        }    ],    "name": "records",    "outputs": [],    "payable": true,    "stateMutability": "payable",    "type": "function"},{    "constant": true,    "inputs": [],    "name": "readrecords",    "outputs": [        {            "name": "",            "type": "string"        }    ],    "payable": false,    "stateMutability": "view",    "type": "function"},{    "inputs": [],    "payable": false,    "stateMutability": "nonpayable",    "type": "constructor"}
+          ]
+
+          
+      // function 
+      //set up web3
+      App = {
+          web3Provider: null,
+          contract: null,
+          
+          init: function() {
+            console.log("asass")
+          if (typeof web3 !== 'undefined') {
+              App.web3Provider = web3.currentProvider;
+          } else {
+              // If no injected web3 instance is detected, fall back to Ganache
+              App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/33067fd895d4482fa44cbe0f5049e96b');
+          }
+          web3 = new Web3(App.web3Provider);
+          console.log(web3);
+          pending = false;
+
+          App.initContract();
+          },
+
+          initContract: function() {
+              App.contract = new web3.eth.Contract( abi,address,{
+                  gasPrice: '200000000'
+              });
+              console.log(App.contract.options.jsonInterface);
+              $("#TakePrize").hide();
+              setInterval(App.updateState, 1000);
+              App.updateState();
+              
+          },
+
+          updateState: async function() {
+              let contract = App.contract;
+              let coinbase = await web3.eth.getCoinbase();
+              App.coinbase = coinbase ;
+
+              web3.eth.getBalance(coinbase, function (err, result) { 
+                  if (!err) {
+                      console.log(result)
+                  }
+                  else console.error(err);
+              });
+          }
+      };
+      $(function() {
+          $(window).load(function() {
+          App.init();
+          });
+      });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+
 <!-- ./wrapper -->
 
 </body>
